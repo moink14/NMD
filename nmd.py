@@ -39,7 +39,7 @@ global size
 num,count,size=0,0,0
 def plog(pinfo,loginfo):
     print(pinfo,end='')
-    with open(logfile,"a") as f:
+    with open(logfile,"a",encoding='utf8') as f:
         f.write(loginfo+'\n')
 def check(path):
     if not os.path.exists(path):

@@ -65,7 +65,7 @@ def dsong(sid,sdir):
         c=0
     plog("%-3s" % str(num)+" | "+name+" - "+artist,name+" - "+artist)
     #可能的特殊字符
-    for i in"\/:*?\">|":
+    for i in "\/:*?\">|":
         if i in name:
             name=name.replace(i," ")
 

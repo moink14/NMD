@@ -116,6 +116,7 @@ def dsong(sid,sdir):
 
 #多首歌曲下载
 def dmore(url,name,typename,coverurl,tracklist):
+    print("-"*width)
     req=requests.get(url,headers)
     j=json.loads(req.text)
     name=eval(name)
@@ -128,10 +129,12 @@ def dmore(url,name,typename,coverurl,tracklist):
         coverimgdata=requests.get(coverurl,headers).content
         f.write(coverimgdata)
     plog("  封面已写入\n","")
+
     for i in tracklist:
         print("-"*width)
         dsong(i["id"],mdir)
-        print("-"*width)
+
+    print("-"*width)
     print("状态 [%s/%s] 大小：%.1f MB" % (str(count),str(num),size/1024/1024))
     print("-"*width)
 
@@ -139,7 +142,7 @@ def dplaylist(sid):
     dmore('http://music.163.com/api/v6/playlist/detail?id='+str(sid),'j["playlist"]["name"]',"歌单",'j["playlist"]["coverImgUrl"]','j["playlist"]["trackIds"]')
 
 def dalbum(sid):
-    dmore("http://music.163.com/api/v1/album/"+str(sid)+"?id="+str(sid)+"&ext=true&offset=0&total=true&limit=999",'name=j["album"]["name"]','专辑','j["album"]["picUrl"]','j["songs"]')
+    dmore("http://music.163.com/api/v1/album/"+str(sid)+"?id="+str(sid)+"&ext=true&offset=0&total=true&limit=999",'j["album"]["name"]','专辑','j["album"]["picUrl"]','j["songs"]')
 def dartist(sid,num):
     dmore("http://music.163.com/api/v1/artist/"+str(sid)+"?id="+str(sid)+"&ext=true&top="+str(num),'j["artist"]["name"]','歌手','j["artist"]["picUrl"]','j["hotSongs"]')
 

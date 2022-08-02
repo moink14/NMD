@@ -147,13 +147,14 @@ def dsearch(keyword,num):
     print("-"*width)
     dsong(songs[sel],musicdir)
     print("-"*width)
+    print('\033[36m下载完成\033[0m')
 
 
 if __name__ == "__main__":
     print("-"*width)
-    print("保存文件夹：%s\n日志：%s" % (musicdir,logfile))
-    print("-"*width)
+    print("保存文件夹：\033[34m%s\033[0m\n日志：\033[34m%s\033[0m" % (musicdir,logfile))
     while True:
+        print("-"*width)
         print('''
         ID    介绍
         1     下载单曲

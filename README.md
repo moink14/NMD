@@ -10,12 +10,17 @@ Netease Music Downloader（简称NMD）
 |歌手下载|下载歌手热门歌曲，选项包括：歌手ID，歌曲个数等|
 |搜索|调用网易云官方API进行搜索操作，选项包括：搜索个数，关键词等|
 
+# 模块依赖
+`requests`
+`eyed3`
 # 使用方法
 ```bash
+pip install -r requirements.txt
 python nmd.py
 ```
 或
 ```bash
+pip install -r requirements.txt
 chmod +x nmd.py
 ./nmd.py
 ```

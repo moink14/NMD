@@ -19,6 +19,7 @@ import os
 import requests
 import eyed3
 import time
+import sys
 
 musicdir="musics"
 logdir="logs"
@@ -30,6 +31,15 @@ headers={
         'Referer':'http://music.163.com/'
 }
 
+def cls():
+    if sys.platform == 'linux':
+        input("将清空屏幕，回车继续，Ctrl+C终止")
+        os.system('clear')
+    elif sys.platform == 'windows':
+        input("将清空屏幕，回车继续，Ctrl+C终止")
+        os.system('cls')
+    else:
+        input("将清空屏幕，回车继续，Ctrl+C终止")
 
 global num
 global count
@@ -149,11 +159,11 @@ def dsearch(keyword,num):
     print("-"*width)
     print('\033[36m下载完成\033[0m')
 
-
 if __name__ == "__main__":
-    print("-"*width)
-    print("保存文件夹：\033[34m%s\033[0m\n日志：\033[34m%s\033[0m" % (musicdir,logfile))
+    cls()
     while True:
+        print("-"*width)
+        print("保存文件夹：\033[34m%s\033[0m\n日志：\033[34m%s\033[0m" % (musicdir,logfile))
         print("-"*width)
         print('''
         ID    介绍
@@ -170,28 +180,34 @@ if __name__ == "__main__":
             o=int(input("请输入选择："))
         except (TypeError,ValueError):
             print("\033[33m输入格式错误\033[0m")
+            cls()
             continue
         if o == 1:
             i=int(input("请输入音乐ID："))
             dsong(i,musicdir)
+            cls()
             continue
         if o == 2:
             i=int(input("请输入歌单ID："))
             dplaylist(i)
+            cls()
             continue
         if o == 3:
             i=int(input("请输入专辑ID："))
             dalbum(i)
+            cls()
             continue
         if o == 4:
             i=int(input("请输入歌手ID："))
             n=int(input("请输入获取个数："))
             dartist(i,n)
+            cls()
             continue
         if o == 5:
             i=str(input("请输入搜索关键词："))
             n=int(input("请输入获取个数："))
             dsearch(i,n)
+            cls()
             continue
         print("ID不存在")
 

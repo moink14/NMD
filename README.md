@@ -30,5 +30,5 @@ chmod +x nmd.py
 
 
 # 感谢
-[metowolf/Meting](https://github.com/metowolf/Meting)
-[Beadd/MusicDownloader](https://github.com/Beadd/MusicDownloader)
+- [metowolf/Meting](https://github.com/metowolf/Meting)
+- [Beadd/MusicDownloader](https://github.com/Beadd/MusicDownloader)

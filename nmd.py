@@ -6,14 +6,6 @@
 # https://github.com/moink14/nmd    https://github.com/Beadd/MusicDownloader
 #
 
-#                           |------------------------→•      选择方式
-#                       |•dsong(单曲下载) <---------- |      |
-#                       |•dplaylist(歌单下载) ______| |(判断是否继续)
-# __main__(选择方式) -> |•dalbum(专辑下载) _________|          |
-#                       |•dartist(歌手前50首下载) __|       exit()
-#                       |•dsearch(歌曲搜索)_________|
-
-
 import json
 import os
 import requests

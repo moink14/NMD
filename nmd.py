@@ -2,8 +2,8 @@
 # coding:UTF-8
 
 #
-# Code by:moink14    Thanks: https://github.com/metowolf/Meting
-#                            https://github.com/Beadd/MusicDownloader
+# Code by:moink14           Thanks: https://github.com/metowolf/Meting
+# https://github.com/moink14/nmd    https://github.com/Beadd/MusicDownloader
 #
 
 #                           |------------------------→•      选择方式

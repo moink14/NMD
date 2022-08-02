@@ -1,5 +1,5 @@
 # NMD
-netease music downloader
+Netease Music Downloader（简称NMD）
 
 # 功能特性
 |功能|介绍|
@@ -9,4 +9,5 @@ netease music downloader
 |专辑下载|下载专辑，选项包括：专辑ID|
 |歌手下载|下载歌手热门歌曲，选项包括：歌手ID，歌曲个数等|
 |搜索|调用网易云官方API进行搜索操作，选项包括：搜索个数，关键词等|
+
 

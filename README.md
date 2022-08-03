@@ -1,7 +1,10 @@
+
 # NMD
-Netease Music Downloader（简称NMD）
+
+Netease Music Downloader（网易云音乐下载器，简称NMD）
 
 # 功能特性
+
 |功能|介绍|
 |:-----|:-----|
 |单曲下载|下载单曲，选项包括：歌曲ID|
@@ -10,15 +13,28 @@ Netease Music Downloader（简称NMD）
 |歌手下载|下载歌手热门歌曲，选项包括：歌手ID，歌曲个数等|
 |搜索|调用网易云官方API进行搜索操作，选项包括：搜索个数，关键词等|
 
+|特性|介绍|
+|:-----|:-----|
+|官方|调用官方API，较安全|
+|质量|320kb/s高质量音频|
+|VIP|可试听即可下载，部分版权保护歌曲，灰色歌曲无法下载|
+|完整|使用eyeD3模块对歌曲文件操作，实现歌曲封面，歌词等ID3数据存储，在播放器中效果更佳|
+|自由|无保护，代码可进行fork，可自由修改|
+
 # 模块依赖
+
 `requests`
 `eyed3`
+
 # 使用方法
+
 ```bash
 pip install -r requirements.txt
 python nmd.py
 ```
+
 或
+
 ```bash
 pip install -r requirements.txt
 chmod +x nmd.py
@@ -33,7 +49,7 @@ chmod +x nmd.py
 ![专辑](https://user-images.githubusercontent.com/110345389/182302189-b4eb8929-d40d-471f-af01-d3d2108a9272.jpg)
 ![搜索](https://user-images.githubusercontent.com/110345389/182302177-07f8ea19-491d-4598-a4b4-4bdf1906a9e4.jpg)
 
-
 # 感谢
+
 - [metowolf/Meting](https://github.com/metowolf/Meting)
 - [Beadd/MusicDownloader](https://github.com/Beadd/MusicDownloader)

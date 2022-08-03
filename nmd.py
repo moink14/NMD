@@ -35,12 +35,14 @@ def cls():
             input("将清空屏幕，回车继续，Ctrl+C终止")
         except KeyboardInterrupt:
             print("已退出")
+            exit()
         os.system("clear")
     elif sys.platform == "windows":
         try:
             input("将清空屏幕，回车继续，Ctrl+C终止")
         except KeyboardInterrupt:
             print("已退出")
+            exit()
         os.system("cls")
     else:
         input("回车继续，Ctrl+C终止")
@@ -64,6 +66,7 @@ def check(path):
 
 
 check(logdir)
+
 
 # 单曲下载函数
 def dsong(sid, sdir):

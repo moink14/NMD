@@ -265,7 +265,7 @@ if __name__ == "__main__":
         type=int,
         choices=[0, 1],
         default=1,
-        help="界面，可惜类型：0（普通命令行） 1（终端交互）",
+        help="界面，可选类型：0（普通命令行） 1（终端交互）",
     )
     parser.add_argument("-i", "--id", type=int, help="网易云ID(单曲/歌单/专辑/歌手)")
     parser.add_argument("-n", "--num", type=int, help="获取数量（歌手及搜索需要）")

@@ -17,9 +17,10 @@ Netease Music Downloader（网易云音乐下载器，简称NMD）
 |:-----|:-----|
 |官方|调用官方API，较安全|
 |质量|320kb/s高质量音频|
-|VIP|可试听即可下载，部分版权保护歌曲，灰色歌曲无法下载|
+|VIP|可试听即可下载，部分版权保护歌曲、灰色歌曲无法下载|
 |完整|使用eyeD3模块对歌曲文件操作，实现歌曲封面，歌词等ID3数据存储，在播放器中效果更佳|
 |自由|无保护，代码可进行fork，可自由修改|
+|美观|界面多样，具有颜色显示，可切换使用tui或cli|
 
 # 模块依赖
 
@@ -39,6 +40,17 @@ python nmd.py
 pip install -r requirements.txt
 chmod +x nmd.py
 ./nmd.py
+```
+
+如需命令行执行，可
+
+```bash
+./nmd.py -h    查看帮助
+./nmd.py -u0 -t 1 -i 歌曲ID                下载指定歌曲
+./nmd.py -u0 -t 2 -i 歌单ID                下载指定歌单
+./nmd.py -u0 -t 3 -i 专辑ID                下载指定歌单
+./nmd.py -u0 -t 4 -n 下载个数 -i 歌单ID    下载指定歌手
+./nmd.py -u0 -s 关键词 -n 搜索个数         搜索歌曲
 ```
 
 # 屏幕截图

@@ -85,14 +85,13 @@ def dsong(sid, sdir):
         return 255
     num += 1
     # 可能的合作歌曲
-    c = 1
+    artist = []
     for i in j["songs"][0]["artists"]:
-        if c:
-            artist = i["name"]
-        else:
-            artist += "/" + i["name"]
-        c = 0
-    plog("%-3s" % str(num) + " | " + name + " - " + artist, name + " - " + artist)
+        artist.append(i["name"])
+    plog(
+        "%-3s" % str(num) + " | " + "/".join(artist) + " - " + name,
+        "/".join(artist) + " - " + name,
+    )
     # 可能的特殊字符
     for i in '\/:*?">|':
         if i in name:
@@ -104,28 +103,55 @@ def dsong(sid, sdir):
         requests.get(
             "http://music.163.com/api/song/enhance/player/url?ids=["
             + str(sid)
-            + "]&br=320000",
+            + "]&br=320000",  # 320kb/s高质量
             headers,
         ).text
     )
-    musicurl = musicapi["data"][0]["url"]
-    # 保存音频文件
-    path = sdir + "/" + name + "." + musicapi["data"][0]["type"]
-    with open(path, "wb") as f:
-        f.write(requests.get(musicurl, headers).content)
-    if not os.path.getsize(path):
-        plog("\n\033[33m音乐 " + name + " 下载失败\033[0m\n", "  音乐下载失败")
-        os.remove(path)
+    if musicapi is None:
+        plog(
+            "\n\033[33m      音乐API调用失败\033[0m\n",
+            "  音乐API调用失败",
+        )
         return 255
-    plog(
-        " (%.1f Mb)\n" % (os.path.getsize(path) / 1024 / 1024),
-        "  已保存，大小" + str(os.path.getsize(path)),
-    )
+    # 保存音频文件
+    mpath = sdir + "/" + " ".join(artist) + " - " + name
+    if os.path.exists(mpath + ".mp3") or os.path.exists(mpath + ".flac"):
+        plog(
+            "\n      音乐已存在，自动跳过\n",
+            "  音乐存在，已跳过",
+        )
+        return 0
+    else:
+        path = mpath + ".mp3"
+        musicurl = musicapi["data"][0]["url"]
+        if musicurl is None:
+            plog(
+                "\n\033[33m      歌曲无法下载\033[0m\n",
+                "  歌曲无法下载"
+            )
+            return 255
+        elif "http" not in musicurl:
+            plog(
+                "\n\033[33m      歌曲无法下载\033[0m\n",
+                "  歌曲无法下载"
+            )
+            return 255
+
+        with open(path, "wb") as f:
+            f.write(requests.get(musicurl, headers).content)
+        if not os.path.getsize(path):
+            plog("\n\033[33m      音乐下载失败\033[0m\n", "  音乐下载失败")
+            os.remove(path)
+            return 255
+        plog(
+            " (%.1f Mb)\n" % (os.path.getsize(path) / 1024 / 1024),
+            "  已保存，大小" + str(os.path.getsize(path)),
+        )
 
     # 加载音频文件，增加ID3数据
     af = eyed3.load(path)
     af.tag.name = name
-    af.tag.artist = artist
+    af.tag.artist = '/'.join(artist)
     plog("      基本信息嵌入", "  基本信息嵌入")
     picdata = requests.get(j["songs"][0]["album"]["picUrl"]).content
     af.tag.images.set(3, picdata, "image/jpeg")
@@ -177,7 +203,7 @@ def dmore(url, name, typename, coverurl, tracklist):
 def dplaylist(sid):
     try:
         dmore(
-            "http://music.163.com/api/v6/playlist/detail?id=" + str(sid),
+            "http://music.163.com/api/v6/playlist/detail?s=0&n=1000&t=0&id=" + str(sid),
             'j["playlist"]["name"]',
             "歌单",
             'j["playlist"]["coverImgUrl"]',

@@ -75,7 +75,6 @@ def dsong(sid, sdir):
     global count
     global size
     # 定义，初始化
-    time.sleep(2)  # 防止频率过高拉黑
     url = "http://music.163.com/api/song/detail/?ids=%5B" + str(sid) + "%5D"
     req = requests.get(url, headers)
     j = json.loads(req.text)
@@ -262,7 +261,10 @@ def dsearch(keyword, num):
     n = 1
     songs = {}
     for i in j["result"]["songs"]:
-        print("%-2s %s" % (str(n), i["name"]))
+        artist = []
+        for u in i["ar"]:
+            artist.append(u["name"])
+        print("%-2s %s - %s" % (str(n), '/'.join(artist), i["name"]))
         songs[n] = i["id"]
         n += 1
     sel = int(input("请输入结果序号："))

@@ -1,4 +1,7 @@
 
+# !!注意
+本仓库已废弃，停止更新，原因：账号邮箱被删除，无法登陆
+
 # NMD
 
 Netease Music Downloader（网易云音乐下载器，简称NMD）

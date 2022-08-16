@@ -1,6 +1,7 @@
 
 # !!注意
 本仓库已废弃，停止更新，原因：账号邮箱被删除，无法登陆
+已迁移至：https://github.com/cnmoink/md
 
 # NMD
 
